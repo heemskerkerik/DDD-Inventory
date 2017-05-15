@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AmbientContext">
+      <Version>2.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>

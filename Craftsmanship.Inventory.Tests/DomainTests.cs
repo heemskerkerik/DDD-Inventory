@@ -14,7 +14,7 @@ namespace Craftsmanship.Inventory.Tests
         /// Then stock is decreased
         /// </summary>
         [Fact]
-        public void PaymentVerified()
+        public void OrderVerifiedRaisesOrderReadyEvent()
         {
             var product = new OrderProduct(productId: 123, quantity: 1);
             var domainEvents = new SpyDomainEvents();
@@ -26,11 +26,11 @@ namespace Craftsmanship.Inventory.Tests
                             }
                         };
 
-            order.VerifyPayment();
+            order.Verify();
 
             order.State.Should().Be(OrderState.Verified);
 
-            domainEvents.RaisedEvents.ShouldAllBeEquivalentTo(new OrderPaidEvent(orderId: 234));
+            domainEvents.RaisedEvents.ShouldAllBeEquivalentTo(new OrderReadyEvent(orderId: 234));
         }
     }
 

@@ -19,10 +19,10 @@ namespace Craftsmanship.Inventory
             State = OrderState.NotVerified;
         }
 
-        public void VerifyPayment()
+        public void Verify()
         {
             State = OrderState.Verified;
-            DomainEvents.Raise(new OrderPaidEvent(OrderId));
+            DomainEvents.Raise(new OrderReadyEvent(OrderId));
         }
     }
 
@@ -39,9 +39,9 @@ namespace Craftsmanship.Inventory
         void Raise<T>(T @event);
     }
 
-    public class OrderPaidEvent
+    public class OrderReadyEvent
     {
-        public OrderPaidEvent(OrderId orderId)
+        public OrderReadyEvent(OrderId orderId)
         {
             OrderId = orderId;
         }

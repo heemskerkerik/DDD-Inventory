@@ -15,7 +15,7 @@
     public enum OrderState
     {
         NotVerified,
-        Verified,
+        Ready,
         Rejected,
     }
 }

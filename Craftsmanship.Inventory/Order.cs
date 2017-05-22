@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using AmbientContext;
 
@@ -21,7 +22,10 @@ namespace Craftsmanship.Inventory
 
         public void Verify()
         {
-            State = OrderState.Verified;
+            if(State == OrderState.Ready)
+                return;
+            
+            State = OrderState.Ready;
             DomainEvents.Raise(new OrderReadyEvent(OrderId));
         }
     }
